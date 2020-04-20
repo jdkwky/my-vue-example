@@ -203,7 +203,6 @@ class Brush extends BaseCanvas {
         this.currentLoc = loc;
         const coordinates = this.coordinates.filter(val => val.type == this.drawType);
         this[this.drawType] && this[this.drawType].mouseDown(coordinates, this.coordinate, loc);
-        console.log('down', this[this.drawType], this.drawType);
 
     }
 
@@ -215,7 +214,6 @@ class Brush extends BaseCanvas {
         const coordinates = this.coordinates.filter(val => val.type == this.drawType);
 
         if (e.buttons == 1) {
-            console.log('1 down');
 
 
 
@@ -251,7 +249,6 @@ class Brush extends BaseCanvas {
 
 
         } else {
-            console.log('move');
 
             // 非拖拽  可能在绘制图形
             this[this.drawType] && this[this.drawType].mouseMove(coordinates, this.coordinate, loc);

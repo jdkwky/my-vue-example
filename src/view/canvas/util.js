@@ -129,8 +129,8 @@ function isPointInLinePath(line, dot, threshold) {
         ((p1X <= x2 && x2 <= p2X) || (p2X <= x2 && x2 <= p1X)) &&
         ((p1Y <= y2 && y2 <= p2Y) || (p2Y <= y2 && y2 <= p1Y))
     ) {
-        const slop = _calSlop(p1, p2);
-        const verSlop = _calVerticalSlop(slop);
+        const slop = _calSlop(p1, p2); // 计算斜率
+        const verSlop = _calVerticalSlop(slop); // 计算垂直斜率
 
         const x1 = p1[0] || 0;
         const y1 = p1[1] || 0;

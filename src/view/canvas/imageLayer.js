@@ -148,6 +148,7 @@ class ImageLayer extends BaseCanvas {
             ) {
                 // 1
                 this.offsetY = pointY - (pointY - this.offsetY) / (scale - ratio * dir) * scale;
+
             } else if ((pointX < x) && pointY >= y + height) {
                 // 2
                 this.offsetX = x;
@@ -177,8 +178,10 @@ class ImageLayer extends BaseCanvas {
                 this.offsetX = x;
                 this.offsetY = y;
             } else {
+                // 9 
                 this.offsetX = pointX - (pointX - this.offsetX) / (scale - ratio * dir) * scale;
                 this.offsetY = pointY - (pointY - this.offsetY) / (scale - ratio * dir) * scale;
+
             }
         }
     }
