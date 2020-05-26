@@ -19,10 +19,14 @@ const menus = [
         path: '/render',
         name: 'render',
         component: () => import('../view/testRender/Wrap.vue'),
-    },{
+    }, {
         path: '/canvas',
         name: 'canvas',
-        component: ()=> import('../view/canvas/Index.vue')
+        component: () => import('../view/canvas/Index.vue')
+    }, {
+        path: '/testkey',
+        name: 'testkey',
+        component: () => import('../view/testKey/Index.vue')
     }
 ];
 
