@@ -27,6 +27,10 @@ const menus = [
         path: '/testkey',
         name: 'testkey',
         component: () => import('../view/testKey/Index.vue')
+    }, {
+        path: '/demo',
+        name: 'demo',
+        component: () => import('../view/demo/Index.vue')
     }
 ];
 
