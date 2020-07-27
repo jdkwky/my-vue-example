@@ -10,14 +10,20 @@
     <div>
       <Input v-model="inputValue" />
     </div>
+
+    <!-- jsx -->
+    <div>
+      <JSXDemo />
+    </div>
   </div>
 </template>
 
 <script>
 import Dialog from "./comp/Dialog";
 import Input from "./comp/Input";
+import JSXDemo from "./comp/jsx/Index";
 export default {
-  components: { Dialog, Input },
+  components: { Dialog, Input, JSXDemo },
   data() {
     return {
       dialogVisible: false,
