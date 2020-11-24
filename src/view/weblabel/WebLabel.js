@@ -4,7 +4,7 @@ import { replace } from 'core-js/fn/symbol';
 class WebLabel extends BaseEvent {
   constructor(props) {
     super();
-    this.scale = 1; //放大 缩小倍数
+    this.scale = this.originScale = 1; //放大 缩小倍数
     this.eventList = new Set(); // 存储event信息
     this.$wrap = null;
 
@@ -29,12 +29,12 @@ class WebLabel extends BaseEvent {
         left: 0;
         bottom: 0;
         right: 0;
-        z-index:10;`;
+        z-index:100;`;
       if (imgLayer) {
         imgLayer.then((imgLayer) => {
           $wrapDiv.appendChild(imgLayer);
           const { clientWidth, clientHeight, originWidth, originHeight } = imgLayer || {};
-          this.scale = clientWidth / originWidth;
+          this.scale = this.originScale = clientWidth / originWidth;
           this.originWidth = originWidth;
           this.originHeight = originHeight;
           // console.log(clientWidth, clientHeight);
@@ -77,17 +77,30 @@ class WebLabel extends BaseEvent {
   }
   // init canvas event
   initCanvasEvent() {
+    //
     this._canvas.addEventListener('mousedown', this.handleMouseDown);
     this._canvas.addEventListener('mousemove', this.handleMouseMove);
     this._canvas.addEventListener('mouseup', this.handleMouseUp);
+    this._canvas.addEventListener('mouseleave', this.handleMouseUp);
+    // 放大缩小
+    this._canvas.addEventListener('wheel', this.handleScroll());
   }
 
   handleMouseDown = (e) => {
+    this._dragMouseDown(e);
+  };
+  // 拖拽函数
+  _dragMouseDown = (e) => {
     this.downPoint = [e.clientX, e.clientY];
     this.eventList.add('mousedown');
   };
 
   handleMouseMove = (e) => {
+    this._dragMouseMove(e);
+  };
+
+  //  拖拽
+  _dragMouseMove = (e) => {
     if (this.eventList.has('mousedown')) {
       this.eventList.add('mousemove');
       this.moveImageLayer(e);
@@ -96,9 +109,11 @@ class WebLabel extends BaseEvent {
   };
 
   handleMouseUp = (e) => {
-    console.log(this.eventList, 'eventList');
+    this._mouseLeave(e);
+  };
+  // h拖拽
+  _mouseLeave = (e) => {
     if (this.eventList.size > 1) {
-      console.log(this.eventList, 'move');
       // move
       this.moveImageLayer(e);
     } else {
@@ -123,6 +138,26 @@ class WebLabel extends BaseEvent {
     this._context.fill();
     this.initCanvasSize(this.originWidth * scalex, this.originHeight * scaley);
   }
+  handleScroll = (e) => {
+    const threshold = 400;
+    let startTime = +new Date();
+    return (e) => {
+      const endTime = +new Date();
+      if (endTime - startTime > threshold) {
+        startTime = endTime;
+        const wheelDelta = e.wheelDelta || e.detail;
+        if (wheelDelta > 0) {
+          // 向上滚动
+          this.scale = this.scale * 1.2;
+          this.scaleCanvas(this.scale, this.scale);
+        } else {
+          //  向下滚动
+          this.scale = this.scale * 0.8;
+          this.scaleCanvas(this.scale, this.scale);
+        }
+      }
+    };
+  };
 }
 
 export default WebLabel;
