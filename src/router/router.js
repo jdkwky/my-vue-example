@@ -4,13 +4,14 @@ const menus = [
   {
     path: '/home',
     name: '主页',
-    children: [
-      {
-        path: '/home/sub',
-        name: '主页详情',
-        component: () => import('../view/home/Detail.vue'),
-      },
-    ],
+    component: () => import('../view/home/Index.vue'),
+    // children: [
+    //   {
+    //     path: '/home/sub',
+    //     name: '主页详情',
+    //     component: () => import('../view/home/Detail.vue'),
+    //   },
+    // ],
   },
   {
     path: '/time',

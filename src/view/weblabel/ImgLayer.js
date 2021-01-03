@@ -12,7 +12,7 @@ class ImgLayer extends BaseEvent {
     if (url) {
       return new Promise((resolve) => {
         const $imageDom = document.createElement('img');
-        $imageDom.style.cssText += 'max-width:100%; max-height:100%';
+        $imageDom.style.cssText += 'width:100%;height:100%;position:absolute;top:0;bottom:0;left:0;right:0';
         $imageDom.src = url;
         const img = new Image();
         img.src = url;
