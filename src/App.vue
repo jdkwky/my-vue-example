@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="app-main">
+  <div class="app-main">
     <div class="app-nav-menu">
       <Menu></Menu>
     </div>
@@ -7,6 +7,7 @@
       <router-view></router-view>
     </div>
   </div>
+  <!-- <div>hello world , {{ name }}</div> -->
 </template>
 
 <script>
@@ -16,8 +17,14 @@ export default {
   components: {
     Menu
   },
+  data(){
+    return {
+      name: 'test'
+    }
+  },
   mounted() {
     console.log(this, "App.vue");
+    console.log(this._route, 'this._route');
   },
   methods: {
     handleClick() {}
