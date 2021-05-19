@@ -3,10 +3,10 @@ import Vue from 'vue';
 
 Vue.use(Vuex);
 
-import moduleA from './moduleA'
+import moduleA from './moduleA';
 
 const state = {
-    stateName: 'global',
+  stateName: 'global',
 };
 
 const getters = {};
@@ -16,15 +16,16 @@ const mutations = {};
 const actions = {};
 
 const modules = {
-    moduleA
+  moduleA,
 };
 
 const store = new Vuex.Store({
-    actions,
-    getters,
-    mutations,
-    modules,
-    state
+  actions,
+  getters,
+  mutations,
+  modules,
+  state,
+  strict: true,
 });
 
 export default store;

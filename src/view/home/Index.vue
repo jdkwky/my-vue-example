@@ -16,9 +16,7 @@
           显示子组件props
           {{ childProps.name }}
         </div>
-        <Test :people="{name: 'test'}" :hasParentData="{
-          props: childProps
-        }"></Test>
+        <Test :people="{name: 'test', deepInfo:{ name: 'deepInfo' }}"></Test>
 
         <!-- functional 组件 -->
         <p>函数式组件</p>
@@ -65,7 +63,8 @@ export default {
       };
     },
     ...mapState({
-      moduleAName: state => state.moduleA.name
+      moduleAName: state => state.moduleA.name,
+      moduleA :state => state.moduleA
     })
   },
   watch:{
@@ -79,7 +78,10 @@ export default {
       console.log(this.list);
     },
     onChangeModuleA(){
-      this.$store.commit('moduleA/setName', `${+new Date}-moduleA`);
+      // this.$store.commit('moduleA/setName', `${+new Date}-moduleA`);
+      this.$store.state.moduleA.name = `${+new Date}-moduleA`
+      console.log(this.$store.state, 'this._data.$$state');
+      // this.moduleAName = `${+new Date}-moduleA`;
     }
   },
   created() {},

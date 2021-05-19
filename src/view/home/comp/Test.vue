@@ -2,7 +2,7 @@
 <template>
     <div>
         <el-button @click="handleChangeProps">更改props信息</el-button>
-        <div>Test {{ people.name }}</div>
+        <div>Test {{ people.name }} {{ people.deepInfo.name }}</div>
         <div>data 可以用Object形式返回：{{ dataIsObject }}</div>
         <!-- 修改dataPeople -->
         <el-button @click="onChangeDataPeople">修改dataPeople</el-button>
@@ -19,7 +19,7 @@
         <p>props 存在被监听的数据信息</p>
 
         <div>
-            {{ hasParentData.props.name }}
+            <!-- {{ hasParentData.props.name }} -->
         </div>
         <el-button @click="onChangePropsName">更改props name信息</el-button>
     </div>
@@ -71,9 +71,10 @@ export default {
   methods: {
       handleChangeProps() {
         //   this.people = 'haha';
-          this.$set(this.people,'name','haha')
-        // //   this.people.name ='haha';
-        //   console.log(this.people,'people');
+        //   this.$set(this.people,'name','haha')
+          this.people.name +='haha';
+          this.people.deepInfo.name+='deepInfo';
+          console.log(this.people,'people');
       },
       onChangeDataPeople(){
           this.dataPeople.name="hehe";
@@ -83,7 +84,7 @@ export default {
         //  console.log(this.dataList);
       },
       onChangePropsName(){
-          this.hasParentData.props.name = '测试一下 哈哈哈';
+        //   this.hasParentData.props.name = '测试一下 哈哈哈';
       },
       onChangeAge(){
           this.realAge= 20
