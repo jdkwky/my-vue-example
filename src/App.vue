@@ -5,6 +5,7 @@
     </div>
     <div class="app-content">
       <router-view></router-view>
+      <div id="vue"></div>
     </div>
   </div>
   <!-- <div>hello world , {{ name }}</div> -->
@@ -17,14 +18,14 @@ export default {
   components: {
     Menu
   },
-  data(){
+  data() {
     return {
-      name: 'test'
-    }
+      name: "test"
+    };
   },
   mounted() {
     console.log(this, "App.vue");
-    console.log(this._route, 'this._route');
+    console.log(this._route, "this._route");
   },
   methods: {
     handleClick() {}

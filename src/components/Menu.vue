@@ -9,22 +9,20 @@
       :default-active="activeIndex"
       active-text-color="#ffd04b"
     >
+      <el-menu-item key="/react-antd" index="/react-antd">react-demo</el-menu-item>
       <template v-for="item in menus">
         <el-menu-item
           v-if="!item.children || (item.children && item.children.length == 0)"
           :key="item.path"
           :index="item.path"
-          >{{ item.name }}</el-menu-item
-        >
+        >{{ item.name }}</el-menu-item>
         <el-submenu :key="item.path" v-else :index="item.path">
           <template slot="title">{{ item.name }}</template>
           <el-menu-item
             v-for="subItem in item.children"
             :key="subItem.path"
             :index="subItem.path"
-          >
-            {{ subItem.name }}
-          </el-menu-item>
+          >{{ subItem.name }}</el-menu-item>
         </el-submenu>
       </template>
     </el-menu>
