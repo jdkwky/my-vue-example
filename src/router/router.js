@@ -38,6 +38,11 @@ const menus = [
     name: 'weblabel',
     component: () => import('../view/weblabel/Index.vue'),
   },
+  {
+    path: '/composition-api',
+    name: 'composition-api',
+    component: () => import('../view/compostion-api/index.vue'),
+  },
 ];
 
 export default menus;

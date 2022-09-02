@@ -7,53 +7,56 @@ import routes from './router';
 import store from './store/index';
 import './single-spa-config.js';
 
+import VueCompositionApi from '@vue/composition-api';
+
 Vue.config.productionTip = false;
 
 Vue.use(ElementUI);
 Vue.use(VueRouter);
+Vue.use(VueCompositionApi);
 
 const router = new VueRouter({
-    mode: 'history',
-    linkActiveClass: 'is-active',
-    routes,
+  mode: 'history',
+  linkActiveClass: 'is-active',
+  routes,
 });
 
 new Vue({
-    // render: function(h) {
-    //   return h('div', {}, [
-    //     h('el-button', {
-    //       domProps: {
-    //         innerHTML: 'TEST',
-    //       },
-    //       on: {
-    //         click: this.onClick,
-    //       },
-    //     }),
-    //     h('div', this.topName),
-    //   ]);
-    // },
-    router,
-    store,
-    ...App,
-    props: ['topName'],
-    propsData: {
-        topName: 'topName',
+  // render: function(h) {
+  //   return h('div', {}, [
+  //     h('el-button', {
+  //       domProps: {
+  //         innerHTML: 'TEST',
+  //       },
+  //       on: {
+  //         click: this.onClick,
+  //       },
+  //     }),
+  //     h('div', this.topName),
+  //   ]);
+  // },
+  router,
+  store,
+  ...App,
+  props: ['topName'],
+  propsData: {
+    topName: 'topName',
+  },
+  // data:{
+  //   text: 'hello text'
+  // },
+  mounted() {
+    console.log(this, 'this');
+    // router
+    // console.log(this._route, 'this._route');
+    // store
+    // console.log(this.$store, 'this.$store', this.topName);
+  },
+  methods: {
+    onClick() {
+      this.topName += 'testTOPName';
     },
-    // data:{
-    //   text: 'hello text'
-    // },
-    mounted() {
-        console.log(this, 'this');
-        // router
-        // console.log(this._route, 'this._route');
-        // store
-        // console.log(this.$store, 'this.$store', this.topName);
-    },
-    methods: {
-        onClick() {
-            this.topName += 'testTOPName';
-        },
-    },
+  },
 }).$mount('#app');
 
 // console.log(vm._data, 'vm.data')
