@@ -16,7 +16,10 @@ const menus = [
   {
     path: '/time',
     name: '时间轴',
-    component: () => import('../view/home/Detail.vue'),
+    components: {
+      default: () => import('../view/home/Detail.vue'),
+      test: () => import('../view/testRender/Wrap.vue')
+    },
   },
   {
     path: '/render',

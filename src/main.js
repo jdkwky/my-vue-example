@@ -1,27 +1,35 @@
-import Vue from 'vue';
-import App from './App.vue';
-import '../theme/index.css';
-import ElementUI from 'element-ui';
-import VueRouter from 'vue-router';
-import routes from './router';
-import store from './store/index';
-import './single-spa-config.js';
+import Vue from 'vue/dist/vue.common.dev';
+// import App from './App.vue';
+// import '../theme/index.css';
+// import ElementUI from 'element-ui';
+// import VueRouter from 'vue-router';
+// import routes from './router';
+// import store from './store/index';
+// import './single-spa-config.js';
 
-import VueCompositionApi from '@vue/composition-api';
+// import VueCompositionApi from '@vue/composition-api';
 
 Vue.config.productionTip = false;
 
-Vue.use(ElementUI);
-Vue.use(VueRouter);
-Vue.use(VueCompositionApi);
+// Vue.use(ElementUI);
+// Vue.use(VueRouter);
+// Vue.use(VueCompositionApi);
 
-const router = new VueRouter({
-  mode: 'history',
-  linkActiveClass: 'is-active',
-  routes,
-});
+
+
+// const router = new VueRouter({
+//   mode: 'history',
+//   linkActiveClass: 'is-active',
+//   routes,
+// });
+
+// router.beforeResolve(function(to, from, next) {
+//   console.log('beforeResolve', this);
+//   next()
+// })
 
 new Vue({
+  template: `<button @click.stop="onClick()">点我</button>`,
   // render: function(h) {
   //   return h('div', {}, [
   //     h('el-button', {
@@ -35,26 +43,27 @@ new Vue({
   //     h('div', this.topName),
   //   ]);
   // },
-  router,
-  store,
-  ...App,
-  props: ['topName'],
-  propsData: {
-    topName: 'topName',
-  },
-  // data:{
-  //   text: 'hello text'
+  // router,
+  // store,
+  // ...App,
+  // props: ['topName'],
+  // propsData: {
+  //   topName: 'topName',
   // },
-  mounted() {
-    console.log(this, 'this');
-    // router
-    // console.log(this._route, 'this._route');
-    // store
-    // console.log(this.$store, 'this.$store', this.topName);
-  },
+  // // data:{
+  // //   text: 'hello text'
+  // // },
+  // mounted() {
+  //   console.log(this, 'this');
+  //   // router
+  //   // console.log(this._route, 'this._route');
+  //   // store
+  //   // console.log(this.$store, 'this.$store', this.topName);
+  // },
   methods: {
     onClick() {
       this.topName += 'testTOPName';
+      console.log('点了');
     },
   },
 }).$mount('#app');

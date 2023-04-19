@@ -9,7 +9,8 @@ export default {
     click && click();
     console.log(test, "test", visible);
   },
-  render(createElement) {
+  render(createElement, allParams) {
+    console.log(allParams, 'otherparams')
     return createElement(
       "h" + this.level,
       {

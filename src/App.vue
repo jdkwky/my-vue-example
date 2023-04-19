@@ -4,7 +4,8 @@
       <Menu></Menu>
     </div>
     <div class="app-content">
-      <router-view></router-view>
+      <router-view ></router-view>
+      <router-view name="test"></router-view>
       <div id="vue"></div>
     </div>
   </div>

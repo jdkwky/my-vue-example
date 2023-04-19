@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { reactive, ref, watch } from '@vue/composition-api';
+import { reactive, ref, watch, getCurrentInstance, onMounted } from '@vue/composition-api';
 import { getList } from './use-hook';
 export default {
   setup() {
@@ -22,7 +22,19 @@ export default {
     };
 
     const list = ref([]);
-    const { obj } = getList(list);
+    const { obj } =  getList(list);
+    console.log(list, obj, 'test')
+    Promise.resolve().then(() => {
+      console.log(getCurrentInstance(), 'getCurrentInstance promiseThen')
+    })
+
+    const getData = async() => {
+      
+    }
+    onMounted(async () => {
+      await getData();
+      console.log(getCurrentInstance(), 'getCurrentInstance getData await')
+    })
 
     watch(
       [() => list.value, () => obj.value],

@@ -17,6 +17,12 @@ export default {
     handleClick() {
       console.log(this.wrap, "click");
     }
-  }
+  },
+  beforeRouteEnter(to, from, next) {
+    console.log('beforeRouteEnter');
+    next(()=> {
+      console.log('function beforeRouteEnter');
+    });
+  },
 };
 </script>

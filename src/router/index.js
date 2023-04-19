@@ -8,7 +8,8 @@ function getPath(list = []) {
         routers.push({
             name: val.name,
             path: val.path,
-            component: val.component
+            component: val.component,
+            components: val.components
         });
         if (!val.hasChildren) {
             if (val.children && val.children.length > 0) {
